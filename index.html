@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light" name="color-scheme"/>
+<meta content="OnlyAI – von Rohideen zu neuen Zusammenhängen und konkreten Handlungsoptionen" name="description"/>
+<title>OnlyAI Online · Fünf Ebenen</title>
+<link href="./style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-layout" id="app">
+<aside aria-label="Bestandsaufnahme" class="sidebar">
+<div class="brand">
+<span aria-hidden="true" class="brand-mark">O<span class="dot"></span></span>
+<div><div class="brand-title">OnlyAI</div><div class="brand-subtitle">Online · Fünf Ebenen · V1.1</div></div>
+</div>
+<button class="primary full-button" id="btn-new">＋ Neue Quelle aufnehmen</button>
+<label class="bulk-import-label" for="bulk-files">↑ Bestehende Word-/Textdateien importieren</label>
+<input accept=".txt,.md,.docx,.odt,.html,.htm,.csv,.json,.xml" hidden="" id="bulk-files" multiple="" type="file"/>
+<div class="sidebar-search"><span aria-hidden="true">⌕</span><input aria-label="Sammlung durchsuchen" id="search" placeholder="Sammlung durchsuchen …"/></div>
+<div class="sidebar-section-title"><span>02_BESTANDSAUFNAHME</span><span id="count-bestand">0</span></div>
+<nav aria-label="Bestandsaufnahme" class="items-list" id="list-bestand"></nav>
+<div class="sidebar-section-title separated"><span>03_ERKENNTNISBESTAND</span><span id="count-erkenntnis">0</span></div>
+<nav aria-label="Erkenntnisbestand" class="items-list" id="list-erkenntnis"></nav>
+<div class="side-bottom">
+<div class="collection-info">Deine Daten liegen in diesem Browser. Regelmäßig als JSON sichern; keine automatische Cloud-Synchronisierung.</div>
+<button class="side-link" id="btn-backup" title="Datenbank als ZIP sichern">↓ Gesamten Datenbestand als JSON sichern</button>
+<button class="side-link" id="btn-sidebar-demo">▸ Offline-Beispiel öffnen</button><button class="side-link" id="btn-help">ⓘ Anleitung anzeigen</button>
+<button class="side-link" id="btn-import-backup">↑ JSON-Datensicherung einlesen</button><input accept=".json" hidden="hidden" id="backup-file" type="file"/></div>
+</aside>
+<div class="main-shell">
+<header class="topbar">
+<div class="topbar-left"><span class="eyebrow">ARBEITSPLATZ</span><strong>Fünf Ebenen · ONLINE 1.1</strong></div>
+<div class="topbar-right"><span class="key-pill" id="key-status">Lokale KI · lädt beim ersten Start</span><button class="small-outline" id="btn-api">KI-Einstellungen</button></div>
+</header>
+<main id="main-content">
+<section class="welcome" id="welcome"><div class="offline-banner">Die Anwendung funktioniert ohne API-Schlüssel für Sammlung, Bearbeitung und Versionen. Die KI läuft auf Wunsch direkt in deinem Browser – ohne API-Schlüssel, ohne Server, ohne Kosten.</div>
+<div class="mini-kicker">ONLYAI / IDEE → ERKENNTNIS → HANDLUNG</div>
+<h1>Aus einer Beobachtung<br/>können neue Möglichkeiten werden.</h1>
+<p>Fünf getrennte Untersuchungsfelder: vom Originalmaterial über neue, fachfremde Zusammenhänge bis zu überprüfbaren Handlungsoptionen. Keine automatische „Erkenntnis“ aus einer bloßen Zusammenfassung.</p>
+<div class="welcome-stages"><span>01 Bestandsaufnahme</span><span>02 Neue Hypothesen</span><span>03 Fremde Verbindungen</span><span>04 Prüfung</span><span>05 Handlung</span></div>
+<div class="welcome-actions"><button class="primary" id="btn-welcome-new">Eigene Idee eingeben <span aria-hidden="true">→</span></button>
+<button class="small-outline offline-demo" id="btn-demo">Offline-Beispiel öffnen</button></div>
+<p class="offline-hint">Alle Entwürfe und Versionsstände werden nur in diesem Browser gespeichert. Sichere sie über „Gesamten Datenbestand als JSON sichern“. Deine bestehende Windows-Datenbank wird nicht automatisch übertragen.</p>
+</section>
+<div hidden="" id="workspace"><div class="offline-banner">Jede neue KI-Untersuchung und jedes ausdrücklich gespeicherte Ergebnis erhält eine neue Version. Offline-Arbeitsblätter sind keine automatisch erzeugten Erkenntnisse.</div>
+<div class="workspace-head">
+<div>
+<div class="mini-kicker">ONLYAI / EINZELUNTERSUCHUNG <span id="item-id"></span></div>
+<h1>Von der Quelle zur Handlung.</h1>
+<p>Jede Ebene ist eigenständig bearbeitbar. Ergebnisse bleiben vorläufig, bis du sie ausdrücklich freigibst.</p>
+</div>
+<div class="workspace-head-actions"><button class="small-outline" id="btn-save-all">Quelle / Entwurf speichern</button><span class="status-chip" id="item-status">Bestandsaufnahme</span></div>
+</div>
+<div class="meta-card">
+<div class="meta-field meta-title"><label for="title">Titel / Arbeitstitel</label><input id="title" maxlength="200" placeholder="Zum Beispiel: Eine ungenutzte Fläche …"/></div>
+<div class="meta-field meta-kind"><label for="kind">Art der Quelle</label><select id="kind"><option>Gedanke</option><option>Idee</option><option>Beobachtung</option><option>Nachricht / Artikel</option><option>Gespräch</option><option>Beschreibung</option><option>Studie / Daten</option><option>Konzept</option><option>Ebene-1-Dokument</option><option>Sonstiges</option></select></div>
+</div>
+<nav aria-label="Zu Ebene springen" class="stage-nav"><a href="#level1">01 <span>Bestandsaufnahme</span></a><a href="#level2">02 <span>Hypothesen</span></a><a href="#level3">03 <span>Verbindungen</span></a><a href="#level4">04 <span>Mechanismen</span></a><a href="#level5">05 <span>Handlungen</span></a></nav>
+<section class="stage-card" data-stage="1" id="level1">
+<div class="stage-top"><div class="stage-number">01</div><div class="stage-heading"><span class="mini-kicker">QUELLE ERFASSEN</span><h2>Bestandsaufnahme</h2><p>Eine neue Idee, ein Artikel, ein Gespräch, eine Beschreibung oder ein Dokument – zuerst für sich verstehen, ohne vorschnelle Vernetzung.</p></div><span class="stage-indicator" id="indicator1">Offen</span></div>
+<div class="stage-content">
+<div class="field-head"><label for="raw-text">Originalmaterial</label><div class="field-actions"><label class="upload-button" for="file-input">↑ Word/Text einlesen</label><input accept=".txt,.md,.docx,.odt,.html,.htm,.csv,.json,.xml" hidden="" id="file-input" type="file"/><span class="muted tiny" id="source-filename"></span></div></div>
+<textarea class="raw-textarea" id="raw-text" placeholder="Hier den unbearbeiteten Text eingeben oder ein Dokument einlesen. Das Original wird getrennt von den Untersuchungen gespeichert."></textarea>
+<div class="field-head result-label"><label for="output1">Untersuchung Ebene 1 <span class="muted">– einzeln versionierbar</span></label></div>
+<textarea class="output-textarea" id="output1" placeholder="Hier erscheint dein Offline-Arbeitsblatt. Du kannst alles direkt bearbeiten und speichern."></textarea>
+<div class="stage-footer"><p class="field-note">Offline: editierbares Arbeitsblatt ohne KI. Mit KI: läuft lokal in deinem Browser – kein Schlüssel, deine Texte verlassen den Rechner nicht.</p><div class="stage-buttons stage-actions"><details class="analysis-menu"><summary>↻ Neu untersuchen</summary><div class="analysis-menu-options"><button class="small-outline btn-offline" data-level="1" type="button">Ohne API · Arbeitsblatt</button><button class="small-outline btn-generate" data-level="1" type="button">Mit KI (lokal, ohne Schlüssel)</button></div></details><button class="small-outline btn-edit" data-level="1" type="button">✎ Bearbeiten</button><button class="primary btn-save-version" data-level="1" type="button">✓ Ergebnis speichern</button><button class="text-button btn-export" data-level="1" type="button">Word ↓</button></div><div class="version-panel"><label for="versions1">Gespeicherte Fassungen</label><select class="version-select" id="versions1"><option value="">Noch keine Version</option></select><button class="small-outline btn-view-version" data-level="1" type="button">Version ansehen</button><small class="version-current" id="version-label1">Noch keine Version gespeichert.</small></div></div>
+</div>
+</section>
+<section class="stage-card" data-stage="2" id="level2">
+<div class="stage-top"><div class="stage-number">02</div><div class="stage-heading"><span class="mini-kicker">NEUE AUSSAGEN ENTWICKELN</span><h2>Hypothetische Zusammenhänge</h2><p>Nicht zusammenfassen: überraschende, nachvollziehbare Mechanismus-Hypothesen entwickeln und Gegenbeispiele mitdenken.</p></div><span class="stage-indicator" id="indicator2">Offen</span></div>
+<div class="stage-content">
+<div class="compare-panel"><div class="compare-head"><div><strong>Weitere Quellen aus Ebene 1</strong><span>Verwandte und bewusst unähnliche Gedanken kombinieren</span></div><button class="text-button" id="btn-candidates2">↻ Vorschläge</button></div><div class="candidate-list" id="candidates2"><p class="muted">Weitere Ideen erscheinen hier, sobald du sie in der Bestandsaufnahme erfasst hast.</p></div></div>
+<div class="field-head result-label"><label for="output2">Neue Hypothesen <span class="muted">– einzeln versionierbar</span></label></div>
+<textarea class="output-textarea" id="output2" placeholder="Welche neuen Aussagen entstehen, die in keinem der Originaldokumente ausdrücklich stehen?"></textarea>
+<div class="stage-footer"><p class="field-note">Ohne Vergleichsquellen ist ein gekennzeichnetes Gedankenexperiment möglich.</p><div class="stage-buttons stage-actions"><details class="analysis-menu"><summary>↻ Neu untersuchen</summary><div class="analysis-menu-options"><button class="small-outline btn-offline" data-level="2" type="button">Ohne API · Arbeitsblatt</button><button class="small-outline btn-generate" data-level="2" type="button">Mit KI (lokal, ohne Schlüssel)</button></div></details><button class="small-outline btn-edit" data-level="2" type="button">✎ Bearbeiten</button><button class="primary btn-save-version" data-level="2" type="button">✓ Ergebnis speichern</button><button class="text-button btn-export" data-level="2" type="button">Word ↓</button></div><div class="version-panel"><label for="versions2">Gespeicherte Fassungen</label><select class="version-select" id="versions2"><option value="">Noch keine Version</option></select><button class="small-outline btn-view-version" data-level="2" type="button">Version ansehen</button><small class="version-current" id="version-label2">Noch keine Version gespeichert.</small></div></div>
+</div>
+</section>
+<section class="stage-card" data-stage="3" id="level3">
+<div class="stage-top"><div class="stage-number">03</div><div class="stage-heading"><span class="mini-kicker">DENKRAHMEN WECHSELN</span><h2>Fachfremde Verbindungen</h2><p>Vorherige Hypothesen mit anderen Lebensbereichen und fremden Quellen verschränken. Strukturelle Analogien finden – und deren Grenzen erkennen.</p></div><span class="stage-indicator" id="indicator3">Offen</span></div>
+<div class="stage-content">
+<div class="compare-panel"><div class="compare-head"><div><strong>Ungewöhnliche Vergleichsquellen</strong><span>Bevorzugt andere Dokumente als in Ebene 2</span></div><button class="text-button" id="btn-candidates3">↻ Vorschläge</button></div><div class="candidate-list" id="candidates3"><p class="muted">Die App schlägt hier besonders unähnliche Quellen vor.</p></div></div>
+<div class="field-head result-label"><label for="output3">Fachfremde Einsichten <span class="muted">– einzeln versionierbar</span></label></div>
+<textarea class="output-textarea" id="output3" placeholder="Welche neuen Prinzipien entstehen durch den Wechsel des Denkrahmens?"></textarea>
+<div class="stage-footer"><p class="field-note">Analogie ist nicht Kausalbeweis. Die Quellen und ihre Grenzen müssen sichtbar bleiben.</p><div class="stage-buttons stage-actions"><details class="analysis-menu"><summary>↻ Neu untersuchen</summary><div class="analysis-menu-options"><button class="small-outline btn-offline" data-level="3" type="button">Ohne API · Arbeitsblatt</button><button class="small-outline btn-generate" data-level="3" type="button">Mit KI (lokal, ohne Schlüssel)</button></div></details><button class="small-outline btn-edit" data-level="3" type="button">✎ Bearbeiten</button><button class="primary btn-save-version" data-level="3" type="button">✓ Ergebnis speichern</button><button class="text-button btn-export" data-level="3" type="button">Word ↓</button></div><div class="version-panel"><label for="versions3">Gespeicherte Fassungen</label><select class="version-select" id="versions3"><option value="">Noch keine Version</option></select><button class="small-outline btn-view-version" data-level="3" type="button">Version ansehen</button><small class="version-current" id="version-label3">Noch keine Version gespeichert.</small></div></div>
+</div>
+</section>
+<section class="stage-card" data-stage="4" id="level4">
+<div class="stage-top"><div class="stage-number">04</div><div class="stage-heading"><span class="mini-kicker">PLAUSIBILITÄT PRÜFEN</span><h2>Mechanismen &amp; Bedingungen</h2><p>Was bewirkt was? Welche Voraussetzungen, Rückkopplungen und Gegenmechanismen müssen wir kennen? Wie könnte ein ernsthafter Gegenversuch aussehen?</p></div><span class="stage-indicator" id="indicator4">Offen</span></div>
+<div class="stage-content">
+<div class="field-head result-label"><label for="output4">Wirkungsprüfung <span class="muted">– einzeln versionierbar</span></label></div>
+<textarea class="output-textarea" id="output4" placeholder="Welche Hypothesen tragen unter welchen Bedingungen? Was ist nur vermutet, und wie prüfen wir es?"></textarea>
+<div class="stage-footer"><p class="field-note">Ohne unabhängige Datenerhebung kann die KI keine empirische Bestätigung behaupten.</p><div class="stage-buttons stage-actions"><details class="analysis-menu"><summary>↻ Neu untersuchen</summary><div class="analysis-menu-options"><button class="small-outline btn-offline" data-level="4" type="button">Ohne API · Arbeitsblatt</button><button class="small-outline btn-generate" data-level="4" type="button">Mit KI (lokal, ohne Schlüssel)</button></div></details><button class="small-outline btn-edit" data-level="4" type="button">✎ Bearbeiten</button><button class="primary btn-save-version" data-level="4" type="button">✓ Ergebnis speichern</button><button class="text-button btn-export" data-level="4" type="button">Word ↓</button></div><div class="version-panel"><label for="versions4">Gespeicherte Fassungen</label><select class="version-select" id="versions4"><option value="">Noch keine Version</option></select><button class="small-outline btn-view-version" data-level="4" type="button">Version ansehen</button><small class="version-current" id="version-label4">Noch keine Version gespeichert.</small></div></div>
+</div>
+</section>
+<section class="stage-card stage-final" data-stage="5" id="level5">
+<div class="stage-top"><div class="stage-number final-number">05</div><div class="stage-heading"><span class="mini-kicker">VOM GEDANKEN ZUR MÖGLICHKEIT</span><h2>Entwicklungen &amp; Handlungsoptionen</h2><p>Nicht bei Szenarien stehen bleiben. Konkrete Möglichkeiten für Menschen, Organisationen und Unternehmen entwickeln – samt Umsetzungsweg, Risiken und erstem Test.</p></div><span class="stage-indicator" id="indicator5">Offen</span></div>
+<div class="stage-content">
+<div class="final-criteria"><strong>Jede vorgeschlagene Handlung soll beantworten:</strong><span>Was tun? · Für wen? · Wer handelt? · Erste 3 Schritte? · Nutzen? · Aufwand? · Risiken? · Test &amp; Abbruchkriterium?</span></div>
+<div class="field-head result-label"><label for="output5">Entwicklungen und konkrete Handlungsoptionen <span class="muted">– einzeln versionierbar</span></label></div>
+<textarea class="output-textarea final-output" id="output5" placeholder="Mindestens drei unterscheidbare Handlungsoptionen, für jede: Zielgruppe, erster Pilot, Nutzen, Aufwand, Risiken und überprüfbares Kriterium."></textarea>
+<div class="stage-footer"><p class="field-note">Keine automatische Übernahme in den Erkenntnisbestand – erst nach deiner Prüfung.</p><div class="stage-buttons stage-actions"><details class="analysis-menu"><summary>↻ Neu untersuchen</summary><div class="analysis-menu-options"><button class="small-outline btn-offline" data-level="5" type="button">Ohne API · Arbeitsblatt</button><button class="small-outline btn-generate" data-level="5" type="button">Mit KI (lokal, ohne Schlüssel)</button></div></details><button class="small-outline btn-edit" data-level="5" type="button">✎ Bearbeiten</button><button class="primary btn-save-version" data-level="5" type="button">✓ Ergebnis speichern</button><button class="text-button btn-export" data-level="5" type="button">Word ↓</button></div><div class="version-panel"><label for="versions5">Gespeicherte Fassungen</label><select class="version-select" id="versions5"><option value="">Noch keine Version</option></select><button class="small-outline btn-view-version" data-level="5" type="button">Version ansehen</button><small class="version-current" id="version-label5">Noch keine Version gespeichert.</small></div></div>
+<div class="promotion"><div><strong>Erkenntnisbestand</strong><p id="promotion-description">Dieser Eintrag bleibt zunächst in 02_Bestandsaufnahme. Du entscheidest selbst, wann er in den Erkenntnisbestand übernommen wird.</p></div><button class="small-outline" id="btn-promote">Nach Prüfung freigeben</button></div>
+</div>
+</section>
+<div class="end-note">OnlyAI · Arbeitshypothesen sind keine bestätigten Tatsachen. Quellen werden nicht automatisch extern verifiziert.</div>
+</div>
+</main>
+</div>
+</div>
+<div class="modal-overlay" hidden="" id="modal-overlay">
+<div aria-labelledby="modal-heading" aria-modal="true" class="modal" role="dialog"><div class="modal-header"><h2 id="modal-heading">KI-Einstellungen</h2><button aria-label="Schließen" class="icon-button" id="btn-close-modal">✕</button></div>
+<label class="engine-option"><input type="radio" name="engine" value="local" checked/> <b>Lokal im Browser – kein API-Schlüssel</b></label>
+<p class="help-line">Das Sprachmodell wird einmalig heruntergeladen und läuft danach auf deiner Grafikkarte (WebGPU, Chrome/Edge am Computer). Deine Texte verlassen den Rechner nicht. Qualität und Tempo hängen vom Modell und von deinem Gerät ab.</p>
+<label for="local-model">Modell</label><select id="local-model"></select>
+<div class="modal-buttons left"><button class="small-outline" id="btn-load-local" type="button">Modell jetzt laden</button></div>
+<div class="local-progress" id="local-progress" hidden=""><div class="bar"><div id="local-progress-bar"></div></div><small id="local-progress-text"></small></div>
+<details class="worker-box"><summary>Optional: eigener Cloudflare-Worker (OpenAI)</summary>
+<label class="engine-option"><input type="radio" name="engine" value="worker"/> Worker statt lokaler KI verwenden</label>
+<label for="worker-url">Cloudflare Worker-Adresse</label><input autocomplete="off" id="worker-url" placeholder="https://onlyai-api.DEINNAME.workers.dev" type="url"/>
+<label for="access-code">Privater Zugangscode für OnlyAI</label><input autocomplete="off" id="access-code" placeholder="Dein langer, selbst gewählter Zugangscode" spellcheck="false" type="password"/>
+<p class="help-line">Der OpenAI-Schlüssel gehört nur als Secret in den Worker, nie in diese Website.</p>
+<div class="modal-buttons"><button class="small-outline" id="btn-disconnect">Verbindung trennen</button><button class="small-outline" id="btn-test-connection">Verbindung testen</button></div></details>
+<div class="modal-buttons"><button class="primary" id="btn-save-config">Übernehmen</button></div>
+</div>
+</div>
+<div class="modal-overlay" hidden="" id="help-overlay">
+<div aria-labelledby="help-heading" aria-modal="true" class="modal help-modal" role="dialog"><div class="modal-header"><h2 id="help-heading">OnlyAI Online: Kurzanleitung</h2><button aria-label="Schließen" class="icon-button" id="btn-close-help">✕</button></div>
+<ol><li>Neue Quelle mit Titel und Originaltext anlegen oder DOCX/ODT/Textdatei importieren. PDF-Inhalte vorerst als Text einfügen.</li>
+<li>Ebene 1 einzeln untersuchen. Weitere Quellen bleiben im Bereich <b>02_Bestandsaufnahme</b>.</li>
+<li>Ebene 2: auch unähnliche Dokumente auswählen und neue Hypothesen erzeugen. Ebene 3: absichtlich fachfremde Quellen hinzufügen.</li>
+<li>Ebene 4: Wirkungsmechanismen, Annahmen und Gegenbeispiele untersuchen. Ebene 5: Entwicklungen UND konkrete Handlungsoptionen entwickeln.</li>
+<li>„Neu untersuchen“ legt eine weitere Version an; „Bearbeiten“ erlaubt Änderungen; „Ergebnis speichern“ erzeugt ebenfalls immer eine neue, wiederherstellbare Version. Historische Versionen lassen sich ansehen und als weitere Version wiederherstellen.</li>
+<li>„Gesamten Datenbestand als JSON sichern“ regelmäßig nutzen. Speicherung erfolgt ausschließlich in <b>diesem Browser</b>. Ein anderer Computer erhält deine Daten nur durch JSON-Import.</li>
+<li>Für KI: „KI-Einstellungen“ öffnen und ein Modell laden (einmaliger Download, danach im Browser zwischengespeichert). Es wird kein API-Schlüssel benötigt. Lokal werden die ersten ca. 3000 Zeichen des Originals ausgewertet.</li>
+<li>Die Freigabe in <b>03_Erkenntnisbestand</b> erfolgt nur ausdrücklich nach Prüfung von Ebene 5.</li></ol>
+<p>Keinen API-Schlüssel in die GitHub-Dateien kopieren. Der lokale KI-Modus braucht keinen.</p>
+</div>
+</div>
+<button class="primary stop-btn" hidden="" id="btn-stop" type="button">■ KI-Erzeugung stoppen</button>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+
+<script defer="" src="./app.js"></script>
+<div class="modal-overlay" hidden="" id="version-overlay">
+<div aria-labelledby="version-heading" aria-modal="true" class="modal version-modal" role="dialog">
+<div class="modal-header"><h2 id="version-heading">Gespeicherte Version</h2><button aria-label="Schließen" class="icon-button" id="btn-close-version" type="button">✕</button></div>
+<p id="version-details"></p>
+<textarea aria-label="Text der früheren Version" id="version-text" readonly=""></textarea>
+<div class="modal-buttons"><button class="small-outline" id="btn-version-cancel" type="button">Schließen</button><button class="primary" id="btn-version-restore" type="button">Als neue Version wiederherstellen</button></div>
+</div>
+</div>
+</body>
+</html>
